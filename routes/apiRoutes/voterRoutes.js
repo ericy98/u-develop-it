@@ -91,19 +91,18 @@ router.put('/voter/:id', (req, res) => {
     });
 });
 
-
 // deactivate account 
 router.delete('/voter/:id', (req, res) => {
     const sql = `DELETE FROM voters WHERE id = ?`;
-  
-    db.run(sql, req.params.id, function(err, result) {
-      if (err) {
-        res.status(400).json({ error: res.message });
-        return;
-      }
-  
-      res.json({ message: 'deleted', changes: this.changes });
+
+    db.run(sql, req.params.id, function (err, result) {
+        if (err) {
+            res.status(400).json({ error: res.message });
+            return;
+        }
+
+        res.json({ message: 'deleted', changes: this.changes });
     });
-  });
+});
 
 module.exports = router;
